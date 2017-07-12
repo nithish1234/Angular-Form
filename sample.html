@@ -15,7 +15,7 @@
     .bt-forMarginBorder{
     width: 60%;
     padding-left: 120px;
-    border-width: 20px;
+    
     border-radius: 30px;
     }
     
@@ -25,10 +25,14 @@
     color: black;
     }
     .forHeading{
-    margin-left:31%;
+    margin-left:25%;
     font-size: 20px;
     font-family:courier;
     color:black;
+/*    background-color: grey;
+    color: black;
+    width: 90%;
+    padding: 10px;*/
     }
     .forlabelinprewingdetials{
     color: black;
@@ -49,10 +53,25 @@
     margin-bottom: 20%;
     }
     .bt-forReset{
-    margin-left: 10%;
+    margin-left: 6%;
     margin-bottom: 20%;
     }
-    
+    .forEditButton{
+        background-color:green;
+        color:black;
+        width:30%;
+        margin-left:90px;
+        margin-bottom: 40px;
+    }
+    /*    .panel-heading{
+    background-color: red;
+    color: black;
+    width: 20%;
+    margin-left:31%;
+    font-size: 20px;
+    font-family:courier;
+    color:black;
+    }*/
     input[type=text]{
     width: 70%;
     margin-top: 10px;
@@ -95,107 +114,102 @@
         <div class="container"  >
             <div ng-app="myApp" ng-controller="formController" >
                 <div class="pannel" >
-                    <form class="panel panel-default bt-forMarginBorder"  name="myForm" novalidate=" ">
-                        <div div="form-group" class="pannel-body" >
-                            <div class="panel-header ">
+                    <form class="panel panel-default bt-forMarginBorder"  name="myForm" novalidate><br>
+                        <div div="form-group" class="pannel-body">
+                            <!-- <div class="panel-header ">
+                                <div class="panel panel-heading"></div>
                                 <h1  class="forHeading">SIGN UP FORM</h1>
-                            </div>
+                            </div> -->
+                               <div class="row"></div>
+                                <div  class=" forHeading"  >SIGN UP</div>
+                            
                             <label  class="forlabel" for="FirstName">First Name</label><br>
-                            <input type="text" name="FirstName" class="form-control" align="center" ng-minlength=3 ng-maxlength=20 ng-model="user.firstname" placeholder="nithish" ng-required="true" ><br>
+                            <input type="text" name="FirstName" class="form-control" align="center" ng-minlength=3 ng-maxlength=20 ng-model="user.firstname" placeholder="nithish"  ng-required="true" ng-pattern="numbersOnly"><br>
                             <span ng-show=" myForm.FirstName.$error.required &&  myForm.FirstName.$touched "> please enter First Name</span>
                             <span ng-show=" myForm.FirstName.$error.minlength && myForm.FirstName.$touched">Name must be greater than 3char</span>
                         </div>
                         <div class="form-group">
                             <label class="forlabel" for="LastName">Last Name</label>
-                            <input type="text" name="LastName" class="form-control" align="center" placeholder="bharath" ng-minlength=3 ng-maxlength=20  ng-model="user.lastname" ng-required="true">
+                            <input type="text" name="LastName" class="form-control" align="center" placeholder="bharath" ng-minlength=3 ng-maxlength=20  ng-model="user.lastname" ng-required="true" ng-keypress="lettersOnly(this)">
                             <span ng-show=" myForm.LastName.$touched && myForm.LastName.$error.required "> please enter Lastst Name</span>
                             <span ng-show=" myForm.LastName.$error.minlength && myForm.LastName.$touched">Name must be greater than 3char</span>
                         </div>
                         <div class="form-group">
                             <label class="forlabel">MobileNumber</label>
                             <input type="text" name="mobileNumber" class="form-control" align="center" numbersOnly  ng-model="user.mobilenumber" placeholder="9092458062" ng-minlength=5     ng-maxlength=10 ng-required="true"  >
-                            <span ng-show="myForm.mobileNumber.$touched && myForm.mobileNumber.$error.required" >pls enter mobile number</span>
+                            <span ng-show="myForm.mobileNumber.$touched && myForm.mobileNumber.$error.required" >pls enter mobile number</span></div>
                             <!--                              <span ng-show="myForm.mobileNumber.$touched && myForm.mobileNumber.$error.required" >pls enter valid mobile number</span>
                             -->
+                            
+                            <div class="form-group">
+                                <label class="forlabel" for="Email">Email</label>
+                                <input type="email" name="email" class="form-control" align="center" placeholder="abc@yopmail.com"
+                                ng-pattern="word"      ng-model="user.Email" ng-required="true" >
+                                <span ng-show="myForm.email.$touched && myForm.email.$error.required">pls enter email-id</span>
+                                <span ng-show="myForm.email.$touched && myForm.email.$error.pattern">pls enter valid email-id</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="forlabel" for="Password">Password</label>
+                                <input type="password" name="Password" class="form-control"  placeholder="Nithih" ng-model="user.password"  ng-required="true">
+                                <span ng-show="myForm.Password.$touched && myForm.Password.$invalid">pls enter password</span>
+                                                         </div>
+                            <div class="form-group">
+                                <label  class="forlabel" for="Confirm Password">Confirm Password</label>
+                                <input type="password" name="CPassword" class="form-control" align="center" placeholder="Nithish" ng-model="user.confirm" ng-required="true" ng-pattern="user.password">
+                                <span ng-show="myForm.Password.$touched && myForm.CPassword.$invalid ">password dsnt match</span>
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-lg bt-submit" ng-disabled="myForm.$invalid" ng-click="submit(user)"  value="SUBMIT">
+                            <button type="reset"  class="btn btn-primary btn-lg bt-forReset" ng-disabled="!user.firstname && !user.lastname  && !user.mobilenumber &&
+                            !user.mobilenumber && !user.Email  && !user.password && !user.confirm" ng-click="reset()">RESET
+                            </button> <br><br> <br>
                         </div>
-                        <div class="form-group">
-                            <label class="forlabel" for="Email">Email</label>
-                            <input type="email" name="email" class="form-control" align="center" placeholder="abc@yopmail.com"
-                            ng-pattern="word"      ng-model="user.Email" ng-required="true" >
-                            <span ng-show="myForm.email.$touched && myForm.email.$error.required">pls enter email-id</span>
-                            <span ng-show="myForm.email.$touched && myForm.email.$error.pattern">pls enter valid email-id</span>
+                        <div ng-show="myDetials" class=" panel panel-default col-md-3" ng-repeat="data in emptyarray track by $index" ><br><br>
+                            <h1 class="panel panel-header">{{data.firstname +" " + data.lastname}}</h1>
+                            <label>First Name:</label><p>{{data.firstname}}</p>
+                            <label>Last Name:</label><p>{{data.lastname}}</p>
+                            <label>Mobile Number:</label><p>{{data.mobilenumber}}</p>
+                            <label>Password Hint:</label><p>{{data.hintPassword}}</p>
+                            <button class="btn btn-lg  forEditButton" ng-click="Edit(user)" >EDIT</button>
+                            
                         </div>
-                        
-                        <div class="form-group">
-                            <label class="forlabel" for="Password">Password</label>
-                            <input type="password" name="Password" class="form-control"  placeholder="Nithih" ng-model="user.password"  ng-required="true">
-                            <span ng-show="myForm.Password.$touched && myForm.Password.$invalid">pls enter password</span>
-                        </div>
-                        <div class="form-group">
-                            <label  class="forlabel" for="Confirm Password">Confirm Password</label>
-                            <input type="password" name="CPassword" class="form-control" align="center" placeholder="Nithish" ng-model="user.confirm" ng-required="true" ng-pattern="user.password">
-                            <span ng-show="myForm.Password.$touched && myForm.CPassword.$invalid ">password dsnt match</span>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-lg bt-submit" ng-disabled="myForm.$invalid" ng-click="submit(user)" >SUBMIT</button>
-                    <button type="reset"  class="btn btn-primary btn-lg bt-submit"  >RESET</button> <br><br> <br>
-                    
-                    <div ng-show="myDetials" class=" panel panel-default col-md-4" ng-repeat="data in emptyarray track by $index" ><br><br>
-                        <h1 class="panel panel-header">{{data.firstname +" " + data.lastname}}</h1>
-                        <label>First Name:</label><p>{{data.firstname}}</p>
-                        <label>Last Name:</label><p>{{data.lastname}}</p>
-                        <label>Mobile Number:</label><p>{{data.mobilenumber}}</p>
-                        <label>Password Hint:</label><p>{{data.hintPassword}}</p>
-                        
                     </div>
                 </div>
-                
             </form>
+            
+            
             <script>
             
             var app = angular.module('myApp', []);
             app.controller('formController', function($scope){
             
-            // {
-            //        app.directive('numbersOnly', numbersOnly);
-            //     numbersOnly.$inject = [];
-            //     function numbersOnly() {
-            //         var directive = {
-            //             restrict: 'A',
-            //             require: 'ngModel',
-            //             link: function (scope, element, attr,formController) {
-            //                 function fromUser(text) {
-            //                     if (text) {
-            //                         var transformedInput = text.replace(/[^0-9-]/g, '');
-            //                         if (transformedInput !== text) {
-            //                             formController.$setViewValue(transformedInput);
-            //                            formController.$render();
-            //                         }
-            //                         return transformedInput;
-            //                     }
-            //                     return undefined;
-            //                 }
-            //                 formController.$parsers.push(fromUser);
-            //             }
-            //         };
-            //         return directive;
-            //     };
-            // });
-            $scope.MobileNumber="/^[0-9]{1,5}$/";
             $scope.emailValidation = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
             $scope.emptyarray=[];
             $scope. myDetials=false;
-            $scope.user = {firstName:" ", lastName:"",Email: "" , mobilenumber: "" , password: "" , confirm: "",  hintPassword:"" }
+            $scope.sampledisable=true;
+             $scope.user = {firstName:" ", lastName:"" , mobilenumber:"",Email:"",Password:"",confirm:"" ,hintPassword:""}
             
+            // $scope.disablereset=false;
+            // $scope.user = {firstName:" ", lastName:"",Email: "" , mobilenumber: "" , password: "" , confirm: "",  hintPassword:"" }
+            // if( $scope.user.firstName!= " "|| $scope.user.lastName!= " "|| $scope.user.Email!=" "|| $scope.user.mobilenumber!=" " ||  $scope.user.password!=" " || $scope.user.confirm!=" "){
+            //     $scope.disablereset=true;
+            // }
             $scope.submit = function(u){ //updated value is in u
             u.hintPassword=u.password.replace(/.(?=.{2,}$)/g, 'x');       //this is to print the last 4 char otheres will be
             $scope.emptyarray.push(u);
             $scope. myDetials=!false;
-            $scope.reset();
+            $scope.user = {firstName:" ", lastName:"" , mobilenumber:"",Email:"",Password:"",confirm:"" ,hintPassword:""}
+
             };
-            // $scope.reset=function(){
-            //       $scope.user = {firstName:" ", lastName:"",Email: "" , mobilenumber: "" , password: "" , confirm: "",  hintPassword:"" }
-            // };
+            $scope.Edit=function(u){
+             
+               $scope.user.firstName= 
+       // $scope.user.lastName=input.lastname;
+       // $scope.user.mobilenumber=input.mobilenumber;
+        }
+            $scope.reset=function(){
+       $scope.user = {firstName:" ", lastName:"" , mobilenumber:"",Email:"",Password:"",confirm:"" ,hintPassword:""}
+            };
             });
             </script>
             
