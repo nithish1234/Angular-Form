@@ -1,0 +1,15 @@
+java mistakes :
+
+18/07/2017
+java.sql.SQLException:
+executequery() is only for select , other all is executeUpdate();
+java class not found exception:
+spelling mistake "mysql"(msql) and d in driver is capital letter 
+ 19/07/2017
+com.mysql.cj.jdbc.exceptions.MysqlDataTruncation:
+Data truncation: Truncated incorrect DOUBLE value: 'given name '
+made mistake in sql query syntax 
+if ? only once the statement is executed
+while ? loops until the condition is satisfied
+http://www.tamilmp3plus.com/6/a-r-rahuman/
+
