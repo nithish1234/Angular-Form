@@ -168,7 +168,7 @@
                                 <label class="forlabel" for="Email">Email</label>
                                 <input type="email" name="email" class="form-control" align="center" placeholder="abc@yopmail.com"
                                 ng-pattern="word" ng-model="user.Email"  ng-pattern=" /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;" ng-required="true" >
-                                <spam
+                          
                                 <span ng-show=" myForm.email.$error.pattern"> pls enter valid email-id</span>
                             </div>
                             
@@ -187,7 +187,7 @@
                             
                             <input type="submit" class="btn btn-primary btn-lg bt-submit" ng-disabled="myForm.$invalid" ng-click="submit(user,data)" value="SUBMIT">
                             <button type="reset"  class="btn btn-primary btn-lg bt-forReset forp" ng-disabled="!user.firstname && !user.lastname  && !user.mobilenumber &&
-                            !user.mobilenumber && !user.Email  && !user.password && !user.confirm " ng-click="reset()">RESET
+                            !user.Email  && !user.password && !user.confirm" ng-click="reset()">RESET
                             </button> <br><br> <br>
                         </div>
                         <div ng-show="myDetials" class=" panel panel-default col-md-3" ng-repeat="data in emptyarray track by $index" ><br><br>
@@ -329,7 +329,7 @@
         };
         
         $scope.reset=function(){
-        $scope.user = {firstName:" ", lastName:"" , mobilenumber:"",Email:"",Password:"",confirm:"" ,hintPassword:""}
+        $scope.user = {firstName:" ", lastName:"" , mobilenumber:"",Email:"", Password:"", confirm:"" , hintPassword:""}
         };
         });
   
