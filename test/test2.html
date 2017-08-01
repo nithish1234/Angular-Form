@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="app.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <style>
+    .red
+    {
+    color: white;
+    background-color: red;
+    }
+    .green
+    {
+    color: white;
+    background-color: green;
+    }
+    .blue
+    {
+    color: white;
+    background-color: blue;
+    }
+    .displayStyle{
+    display: inline-block;
+    text-align-last: center;
+    }
+    .center {
+    float: none;
+    margin-left: auto;
+    }
+    .imagefixsam{
+    height:250px;
+    }
+    .imagefixiphone{
+    height: 250px;
+    }
+    .imgip8{
+    height: 250px;
+    }
+    </style>
+    }
+    }
+  </head>
+  <body>
+    <div ng-app="myapp" ng-controller="cartController">
+      <div class="container">
+        <div class="row">
+          
+          
+          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-12 col-xl-12">
+            <br/>
+            <div class="card displayStyle  center" style="max-width:319px; align-items: center;">
+              <img src="E:\Projects\Form\test\images\1.jpg" class="card-img-top imagefixiphone"  alt="Card image" />
+              <div class="card-block">
+                <h4 class="card-title">{{products[0].product_name}} </h4>
+                <p class="card-text">{{products[0].product_discription}}</p><br>
+                <h5 class="card-title">Price:{{products[0].product_price}}</h5>
+                <button class="btn btn-success" ng-click="sendIndex($index)">AddToCart</button>
+              </div>
+            </div>
+            
+            <div class="card displayStyle center" style="max-width:319px; align-items: center;">
+              <img src=" E:\Projects\Form\test\images\images.jpg" class="card-img-top imgip8" alt="Card image" />
+              <div class="card-block">
+                
+                <h4 class="card-title">{{products[1].product_name}}</h4>
+                <p class="card-text">{{products[1].product_discription}}</p><br>
+                <h5 class="card-title">Price:{{products[1].product_price}}</h5>
+                <button class="btn btn-success" ng-click="sendIndex($index)">AddToCart</button>
+              </div>
+            </div>
+            <div class="card displayStyle center" style="max-width:319px;">
+              <img src=" E:\Projects\Form\test\images\090716-apple-iphone-7-plus-6885.jpg" class="card-img-top imagefixsam" alt="Card image" />
+              <div class="card-block">
+                
+                <h4 class="card-title">{{products[2].product_name}}</h4>
+                <p class="card-text">{{products[2].product_discription}}</p><br>
+                <h5 class="card-title">Price:{{products[2].product_price}}</h5>
+                <button class="btn btn-success" ng-click="sendIndex($index)">AddToCart</button>
+              </div>
+            </div><br><br><br>
+             <div class="card displayStyle center" style="width:250px; height:200px;">
+              <div class="card-block">
+                
+                <h1 class="card-title">Cart</h1>
+                <p class="card-text"></p><br>
+                <h5 class="card-title"></h5>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery first, then Bootstrap JS. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+</body>
+</html>
